@@ -1,51 +1,69 @@
 [gd_scene format=3 uid="uid://b0empj5ad406w"]
 
 [ext_resource type="Script" uid="uid://cs2f8kqf73ort" path="res://movement.gd" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://cphgjpvmcmob3" path="res://bug.png" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://bh1r64iv5qrcs" path="res://saw_movement.gd" id="3_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://bv6ucjx3wrmkb" path="res://evil.png" id="3_h2yge"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7dm0k"]
+radius = 8.0
+height = 16.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ig7tw"]
-size = Vector2(112, 16)
+size = Vector2(336, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
-size = Vector2(18, 97.25)
+size = Vector2(18, 161.625)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_h2yge"]
-friction = 0.15
-bounce = 1.05
+friction = 0.0
+bounce = 2.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1bvp3"]
-radius = 16.0
+radius = 13.152946
 
 [node name="Node2D" type="Node2D" unique_id=1884211585]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=554593843]
 script = ExtResource("1_ig7tw")
 
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=916676475]
+texture = ExtResource("2_0xm2m")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=920881045]
-position = Vector2(0, -72)
 shape = SubResource("CapsuleShape2D_7dm0k")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=622188050]
+zoom = Vector2(3, 3)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1179202796]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=469899939]
-position = Vector2(0, 16)
+position = Vector2(115, 33)
+shape = SubResource("RectangleShape2D_ig7tw")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=371089001]
+position = Vector2(115, -135)
 shape = SubResource("RectangleShape2D_ig7tw")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1942167027]
-position = Vector2(-64, -37.5)
+position = Vector2(-53, -56)
 shape = SubResource("RectangleShape2D_0xm2m")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=346003059]
-position = Vector2(64, -37)
+position = Vector2(284, -51.1875)
 shape = SubResource("RectangleShape2D_0xm2m")
 
 [node name="StaticBody2D2" type="RigidBody2D" parent="." unique_id=1716198722]
+mass = 2.712
 physics_material_override = SubResource("PhysicsMaterial_h2yge")
+angular_velocity = 0.17453292
+script = ExtResource("3_1bvp3")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2" unique_id=334342241]
+position = Vector2(115, -69)
+texture = ExtResource("3_h2yge")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=1894369066]
-position = Vector2(-24, -48)
+position = Vector2(115, -69)
 shape = SubResource("CircleShape2D_1bvp3")
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=622188050]
-zoom = Vector2(3, 3)
