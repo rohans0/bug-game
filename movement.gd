@@ -4,29 +4,6 @@ extends CharacterBody2D
 const SPEED = 100.0
 const JUMP_VELOCITY = -100.0
 
-const INVUL_COOLDOWN = 10.0 #seconds
-const INVUL_TIME = 1.0 #seconds
-var invul_usable:bool = true
-var is_invul:bool = false
-var lives:int = 5
-
-@export var default_position: Vector2 = Vector2(0, 0)
-
-
-func _ready():
-	
-	$"Invulnerability Cooldown".one_shot = true
-	$"Invulnerability Cooldown".wait_time = INVUL_COOLDOWN
-	$"Invulnerability Timer".one_shot = true
-	$"Invulnerability Timer".wait_time = INVUL_TIME
-	
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("invulnerability") and invul_usable:
-		invul_usable = false
-		is_invul = true
-		$"Invulnerability Timer".start()
-		$"Invulnerability Cooldown".start()
-		print("invulnerability has begun")
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -46,18 +23,3 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
-
-func _take_damage():
-	lives -= 1
-	#if lives <= 0:
-		#print("game over!") #add real game over here
-	self.global_position = default_position
-
-func _on_invulnerability_cooldown_timeout():
-	invul_usable = true
-	print("invulnerability cooldown is over")
-
-
-func _on_invulnerability_timer_timeout():
-	is_invul = false
-	print("invulnerability is over")
