@@ -8,7 +8,7 @@ radius = 15.0
 
 [node name="Goal" type="Area2D" unique_id=2002405367 node_paths=PackedStringArray("game_over_label")]
 script = ExtResource("1_tnqmq")
-game_over_label = NodePath("CanvasLayer/RichTextLabel")
+game_over_label = NodePath("")
 
 [node name="Goal" type="Sprite2D" parent="." unique_id=82524478]
 position = Vector2(248, -2)
@@ -17,28 +17,5 @@ texture = ExtResource("2_aek8e")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=869374404]
 position = Vector2(248, -3)
 shape = SubResource("CircleShape2D_y7oaa")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1242435601]
-
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer" unique_id=932697577]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -137.5
-offset_top = -70.0
-offset_right = 137.5
-offset_bottom = 70.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_font_sizes/normal_font_size = 32
-bbcode_enabled = true
-text = "[rainbow freq=1.0 sat=0.8 val=0.8][wave]YOU WIN[/wave][/rainbow]"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

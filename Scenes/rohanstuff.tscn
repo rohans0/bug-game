@@ -1,18 +1,15 @@
 [gd_scene format=3 uid="uid://dyuhbokfu3ymm"]
 
 [ext_resource type="PackedScene" uid="uid://c87sb8657jv8i" path="res://Prefab Scenes/saw.tscn" id="1_aoqqu"]
-[ext_resource type="Script" uid="uid://ol8ndte14ot1" path="res://Scripts/finish.gd" id="2_d52th"]
-[ext_resource type="Texture2D" uid="uid://j1o0mvqwnp8o" path="res://Textures/goal.png" id="3_70ek0"]
+[ext_resource type="PackedScene" uid="uid://dvxqmigbhscsj" path="res://Prefab Scenes/goal.tscn" id="2_aoqqu"]
 [ext_resource type="PackedScene" uid="uid://c3qcc8abr1750" path="res://Prefab Scenes/bug.tscn" id="4_adic2"]
+[ext_resource type="PackedScene" uid="uid://dlum3bvsfbyxr" path="res://Prefab Scenes/ui.tscn" id="4_d52th"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ig7tw"]
 size = Vector2(336, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
 size = Vector2(18, 161.625)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_y7oaa"]
-radius = 15.0
 
 [node name="Node2D" type="Node2D" unique_id=1884211585]
 
@@ -37,45 +34,14 @@ shape = SubResource("RectangleShape2D_0xm2m")
 [node name="Saw" parent="." unique_id=1506822958 instance=ExtResource("1_aoqqu")]
 position = Vector2(94, -80)
 
-[node name="Goal" type="Area2D" parent="." unique_id=1202751751 node_paths=PackedStringArray("game_over_label")]
-script = ExtResource("2_d52th")
-game_over_label = NodePath("CanvasLayer/RichTextLabel")
-
-[node name="Goal" type="Sprite2D" parent="Goal" unique_id=158667862]
-position = Vector2(248, -2)
-texture = ExtResource("3_70ek0")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal" unique_id=583661796]
-position = Vector2(248, -3)
-shape = SubResource("CircleShape2D_y7oaa")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="Goal" unique_id=571214216]
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Goal/CanvasLayer" unique_id=915873265]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -137.5
-offset_top = -70.0
-offset_right = 137.5
-offset_bottom = 70.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_font_sizes/normal_font_size = 32
-bbcode_enabled = true
-text = "[rainbow freq=1.0 sat=0.8 val=0.8][wave]YOU WIN[/wave][/rainbow]"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Goal" parent="." unique_id=2002405367 node_paths=PackedStringArray("UI") instance=ExtResource("2_aoqqu")]
+UI = NodePath("../CharacterBody2D/UI")
 
 [node name="CharacterBody2D" parent="." unique_id=334005469 instance=ExtResource("4_adic2")]
 position = Vector2(-19, -3)
 
+[node name="UI" parent="CharacterBody2D" unique_id=672430857 instance=ExtResource("4_d52th")]
+position = Vector2(19, 3)
+
 [node name="Saw2" parent="." unique_id=1097714849 instance=ExtResource("1_aoqqu")]
 position = Vector2(170, -44)
-
-[connection signal="body_entered" from="Goal" to="Goal" method="_on_body_entered"]
