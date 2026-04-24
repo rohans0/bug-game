@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://b0empj5ad406w"]
+
+[ext_resource type="PackedScene" uid="uid://c3qcc8abr1750" path="res://Prefab Scenes/bug.tscn" id="1_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://c87sb8657jv8i" path="res://Prefab Scenes/saw.tscn" id="2_8gbba"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ig7tw"]
+size = Vector2(336, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
+size = Vector2(18, 161.625)
+
+[node name="Node2D" type="Node2D" unique_id=1884211585]
+
+[node name="CharacterBody2D" parent="." unique_id=334005469 instance=ExtResource("1_bo1nx")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1179202796]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=469899939]
+position = Vector2(115, 33)
+shape = SubResource("RectangleShape2D_ig7tw")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=371089001]
+position = Vector2(115, -135)
+shape = SubResource("RectangleShape2D_ig7tw")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1942167027]
+position = Vector2(-53, -56)
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=346003059]
+position = Vector2(284, -51.1875)
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="Saw" parent="." unique_id=1506822958 instance=ExtResource("2_8gbba")]
+position = Vector2(115, -69)

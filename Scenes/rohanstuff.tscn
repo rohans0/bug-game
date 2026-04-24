@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dyuhbokfu3ymm"]
 
-[ext_resource type="PackedScene" uid="uid://d3y5d208jafry" path="res://bug.tscn" id="1_y7oaa"]
-[ext_resource type="PackedScene" uid="uid://c87sb8657jv8i" path="res://saw.tscn" id="2_63hx2"]
-[ext_resource type="Texture2D" uid="uid://j1o0mvqwnp8o" path="res://goal.png" id="4_y7oaa"]
-[ext_resource type="Script" uid="uid://ol8ndte14ot1" path="res://finish.gd" id="5_ax0kw"]
+[ext_resource type="PackedScene" uid="uid://c87sb8657jv8i" path="res://Prefab Scenes/saw.tscn" id="1_aoqqu"]
+[ext_resource type="Script" uid="uid://ol8ndte14ot1" path="res://Scripts/finish.gd" id="2_d52th"]
+[ext_resource type="Texture2D" uid="uid://j1o0mvqwnp8o" path="res://Textures/goal.png" id="3_70ek0"]
+[ext_resource type="PackedScene" uid="uid://c3qcc8abr1750" path="res://Prefab Scenes/bug.tscn" id="4_adic2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ig7tw"]
 size = Vector2(336, 16)
@@ -15,8 +15,6 @@ size = Vector2(18, 161.625)
 radius = 15.0
 
 [node name="Node2D" type="Node2D" unique_id=1884211585]
-
-[node name="Bug" parent="." unique_id=1352055177 instance=ExtResource("1_y7oaa")]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1179202796]
 
@@ -36,24 +34,24 @@ shape = SubResource("RectangleShape2D_0xm2m")
 position = Vector2(284, -51.1875)
 shape = SubResource("RectangleShape2D_0xm2m")
 
-[node name="Saw" parent="." unique_id=1506822958 instance=ExtResource("2_63hx2")]
+[node name="Saw" parent="." unique_id=1506822958 instance=ExtResource("1_aoqqu")]
 position = Vector2(94, -80)
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1202751751 node_paths=PackedStringArray("game_over_label")]
-script = ExtResource("5_ax0kw")
-game_over_label = NodePath("../CanvasLayer/RichTextLabel")
+[node name="Goal" type="Area2D" parent="." unique_id=1202751751 node_paths=PackedStringArray("game_over_label")]
+script = ExtResource("2_d52th")
+game_over_label = NodePath("CanvasLayer/RichTextLabel")
 
-[node name="Goal" type="Sprite2D" parent="Area2D" unique_id=158667862]
+[node name="Goal" type="Sprite2D" parent="Goal" unique_id=158667862]
 position = Vector2(248, -2)
-texture = ExtResource("4_y7oaa")
+texture = ExtResource("3_70ek0")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=583661796]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal" unique_id=583661796]
 position = Vector2(248, -3)
 shape = SubResource("CircleShape2D_y7oaa")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=571214216]
+[node name="CanvasLayer" type="CanvasLayer" parent="Goal" unique_id=571214216]
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer" unique_id=915873265]
+[node name="RichTextLabel" type="RichTextLabel" parent="Goal/CanvasLayer" unique_id=915873265]
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
@@ -74,7 +72,10 @@ text = "[rainbow freq=1.0 sat=0.8 val=0.8][wave]YOU WIN[/wave][/rainbow]"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="StaticBody2D2" parent="." unique_id=2011916107 instance=ExtResource("2_63hx2")]
-position = Vector2(106, -45)
+[node name="CharacterBody2D" parent="." unique_id=334005469 instance=ExtResource("4_adic2")]
+position = Vector2(-19, -3)
 
-[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[node name="Saw2" parent="." unique_id=1097714849 instance=ExtResource("1_aoqqu")]
+position = Vector2(170, -44)
+
+[connection signal="body_entered" from="Goal" to="Goal" method="_on_body_entered"]

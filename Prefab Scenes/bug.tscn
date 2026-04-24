@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://c3qcc8abr1750"]
+
+[ext_resource type="Script" uid="uid://cs2f8kqf73ort" path="res://Scripts/movement.gd" id="1_ibwlt"]
+[ext_resource type="Texture2D" uid="uid://cphgjpvmcmob3" path="res://Textures/bug.png" id="2_dt476"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7dm0k"]
+radius = 8.0
+height = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lquwl"]
+
+[node name="Player" type="CharacterBody2D" unique_id=334005469]
+script = ExtResource("1_ibwlt")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=240086421]
+texture = ExtResource("2_dt476")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=733296896]
+shape = SubResource("CapsuleShape2D_7dm0k")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2048132325]
+zoom = Vector2(3, 3)
+
+[node name="Invulnerability Cooldown" type="Timer" parent="." unique_id=8616104]
+
+[node name="Invulnerability Timer" type="Timer" parent="." unique_id=993188805]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=730199751]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=974360967]
+shape = SubResource("CircleShape2D_lquwl")
+
+[connection signal="timeout" from="Invulnerability Cooldown" to="." method="_on_invulnerability_cooldown_timeout"]
+[connection signal="timeout" from="Invulnerability Timer" to="." method="_on_invulnerability_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
