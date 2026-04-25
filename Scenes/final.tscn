@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://dvxqmigbhscsj" path="res://Prefab Scenes/goal.tscn" id="3_k2yra"]
 [ext_resource type="PackedScene" uid="uid://c3qcc8abr1750" path="res://Prefab Scenes/bug.tscn" id="4_ht8c0"]
 [ext_resource type="PackedScene" uid="uid://dlum3bvsfbyxr" path="res://Prefab Scenes/ui.tscn" id="5_k2yra"]
+[ext_resource type="Texture2D" uid="uid://f8ekh5xikpy3" path="res://Textures/secret.png" id="6_fi6e3"]
+[ext_resource type="Texture2D" uid="uid://b3u8va7kg6y1o" path="res://Textures/escaped.png" id="7_7dun6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_adj38"]
 size = Vector2(336, 6)
@@ -373,6 +375,27 @@ angular_velocity = 0.34906584
 [node name="Goal" parent="." unique_id=2002405367 node_paths=PackedStringArray("UI") instance=ExtResource("3_k2yra")]
 position = Vector2(-577, 743)
 UI = NodePath("../Player/UI")
+
+[node name="Secret" type="Sprite2D" parent="." unique_id=598111929]
+position = Vector2(2164.25, 275.25)
+scale = Vector2(1.0605477, 5.109375)
+texture = ExtResource("6_fi6e3")
+
+[node name="Escaped" type="Sprite2D" parent="." unique_id=1792972694]
+position = Vector2(-843, 1710)
+texture = ExtResource("7_7dun6")
+
+[node name="Escaped3" type="Sprite2D" parent="Escaped" unique_id=1183807080]
+position = Vector2(412, -32)
+texture = ExtResource("7_7dun6")
+
+[node name="Escaped4" type="Sprite2D" parent="Escaped" unique_id=1235268870]
+position = Vector2(1314, -48)
+texture = ExtResource("7_7dun6")
+
+[node name="Escaped2" type="Sprite2D" parent="Escaped" unique_id=1800053045]
+position = Vector2(852, -16)
+texture = ExtResource("7_7dun6")
 
 [node name="Player" parent="." unique_id=334005469 node_paths=PackedStringArray("UI") instance=ExtResource("4_ht8c0")]
 position = Vector2(27, -4)
