@@ -38,9 +38,10 @@ func _process(delta: float) -> void:
 		
 	
 	if is_area_overlapping_saw:
-		UI.get_node("CanvasLayer/Lives").text = str(fake_lives)
-		fake_lives -= 1
-		if fake_lives < -100: fake_lives = lives
+		print(fake_lives)
+		fake_lives -= 3
+		UI.get_node("CanvasLayer/Lives").text =  "HEALTH:"+ str(fake_lives)
+		if fake_lives < -10000: fake_lives = lives
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

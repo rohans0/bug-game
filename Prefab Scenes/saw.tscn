@@ -5,7 +5,7 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_h2yge"]
 friction = 0.0
-bounce = 2.0
+bounce = 3.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1bvp3"]
 radius = 13.152946
@@ -13,7 +13,7 @@ radius = 13.152946
 [node name="Saw" type="RigidBody2D" unique_id=1506822958 groups=["Enemy"]]
 mass = 2.712
 physics_material_override = SubResource("PhysicsMaterial_h2yge")
-angular_velocity = 0.17453292
+angular_velocity = 0.87266463
 script = ExtResource("1_ddabk")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1506182293]

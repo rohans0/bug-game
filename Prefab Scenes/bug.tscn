@@ -4,10 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://cphgjpvmcmob3" path="res://Textures/bug.png" id="2_dt476"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7dm0k"]
-radius = 8.0
-height = 16.0
+radius = 4.0
+height = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lquwl"]
+radius = 19.0
 
 [node name="Player" type="CharacterBody2D" unique_id=334005469]
 script = ExtResource("1_ibwlt")
