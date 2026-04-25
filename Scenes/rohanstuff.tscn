@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dyuhbokfu3ymm"]
 
 [ext_resource type="PackedScene" uid="uid://c87sb8657jv8i" path="res://Prefab Scenes/saw.tscn" id="1_aoqqu"]
+[ext_resource type="Texture2D" uid="uid://chccouj8u1x0u" path="res://Textures/platform.png" id="1_d52th"]
 [ext_resource type="PackedScene" uid="uid://dvxqmigbhscsj" path="res://Prefab Scenes/goal.tscn" id="2_aoqqu"]
 [ext_resource type="PackedScene" uid="uid://c3qcc8abr1750" path="res://Prefab Scenes/bug.tscn" id="4_adic2"]
 [ext_resource type="PackedScene" uid="uid://dlum3bvsfbyxr" path="res://Prefab Scenes/ui.tscn" id="4_d52th"]
@@ -14,6 +15,11 @@ size = Vector2(18, 161.625)
 [node name="Node2D" type="Node2D" unique_id=1884211585]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1179202796]
+
+[node name="Platform" type="Sprite2D" parent="StaticBody2D" unique_id=453010705]
+position = Vector2(114.74999, 34.625)
+scale = Vector2(20.53125, 1.4218745)
+texture = ExtResource("1_d52th")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=469899939]
 position = Vector2(115, 33)
@@ -31,6 +37,16 @@ shape = SubResource("RectangleShape2D_0xm2m")
 position = Vector2(284, -51.1875)
 shape = SubResource("RectangleShape2D_0xm2m")
 
+[node name="Platform2" type="Sprite2D" parent="StaticBody2D" unique_id=1806219843]
+position = Vector2(-53, -44)
+scale = Vector2(1, 7.8125)
+texture = ExtResource("1_d52th")
+
+[node name="Platform3" type="Sprite2D" parent="StaticBody2D" unique_id=1103867092]
+position = Vector2(320.75, -51.750008)
+scale = Vector2(5.906251, 10.40625)
+texture = ExtResource("1_d52th")
+
 [node name="Saw" parent="." unique_id=1506822958 instance=ExtResource("1_aoqqu")]
 position = Vector2(94, -80)
 
@@ -45,3 +61,8 @@ position = Vector2(19, 3)
 
 [node name="Saw2" parent="." unique_id=1097714849 instance=ExtResource("1_aoqqu")]
 position = Vector2(170, -44)
+
+[node name="Platform" type="Sprite2D" parent="." unique_id=2010940683]
+position = Vector2(109.5, -136)
+scale = Vector2(20.5625, 1)
+texture = ExtResource("1_d52th")
