@@ -4,7 +4,7 @@ extends CharacterBody2D
 const SPEED = 100.0
 const JUMP_VELOCITY = -100.0
 
-const INVUL_COOLDOWN = 10.0 #seconds
+const INVUL_COOLDOWN = 5.0 #seconds
 const INVUL_LENGTH = 1.0 #seconds
 var invul_usable:bool = true
 var is_invul:bool = false
@@ -35,6 +35,14 @@ func _process(delta: float) -> void:
 		$"Invulnerability Timer".start()
 		$"Invulnerability Cooldown".start()
 		print("invulnerability has begun")
+	
+	#cooldown timer animation
+	if (not invul_usable):
+		var time_left = $"Invulnerability Cooldown".time_left
+		var wait_time = $"Invulnerability Cooldown".wait_time
+		UI.get_node("CanvasLayer/InvulCooldown").value = (wait_time - time_left) / (wait_time) * 100
+	else:
+		UI.get_node("CanvasLayer/InvulCooldown").value = UI.get_node("CanvasLayer/InvulCooldown").max_value
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -77,6 +85,7 @@ func _on_invulnerability_cooldown_timeout():
 func _on_invulnerability_timer_timeout():
 	is_invul = false
 	print("invulnerability is over")
+	
 
 
 func _on_area_2d_body_entered(body):
